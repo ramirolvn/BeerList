@@ -1,0 +1,19 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+def third_party
+  pod 'Alamofire', '4.9.1'
+end
+
+target 'NetworkPackage' do
+  use_frameworks!
+
+  # Pods for NetworkPackage
+  third_party
+
+  target 'NetworkPackageTests' do
+    # Pods for testing
+    third_party
+  end
+
+end

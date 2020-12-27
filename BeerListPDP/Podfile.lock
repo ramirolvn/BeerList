@@ -1,0 +1,23 @@
+PODS:
+  - Alamofire (4.9.1)
+  - NetworkPackage (0.0.1):
+    - Alamofire (= 4.9.1)
+
+DEPENDENCIES:
+  - NetworkPackage (from `../NetworkPackage`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+
+EXTERNAL SOURCES:
+  NetworkPackage:
+    :path: "../NetworkPackage"
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  NetworkPackage: 29a664219d087f8a8717600d7a0051513c82facf
+
+PODFILE CHECKSUM: 5f7907a6b709a9e92e2d43972a31e27c2db42923
+
+COCOAPODS: 1.10.0
