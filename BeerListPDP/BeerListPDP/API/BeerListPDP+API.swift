@@ -10,17 +10,17 @@ import NetworkPackage
 
 // MARK: - APICheckoutProtocol
 
-protocol BeerListPDP_APIProtocol {
+protocol BeerListPDPAPIProtocol {
 
     func getBeers(
-        withPage page: Int,
+        at page: Int,
         completion: @escaping (_ data: [Beer]?, DefaultResponseError?) -> Void
     )
 }
 
 // MARK: - APICheckout
 
-final class BeerListPDPAPI: BeerListPDP_APIProtocol {
+class BeerListPDPAPI: BeerListPDPAPIProtocol {
 
     // MARK: - Properties
     private let baseURL = "https://api.punkapi.com/v2/beers"
@@ -32,11 +32,8 @@ final class BeerListPDPAPI: BeerListPDP_APIProtocol {
 
     // MARK: - Public Functions
 
-    /**
-    Get Itens from Cart
-    */
     func getBeers(
-        withPage page: Int,
+        at page: Int,
         completion: @escaping (_ data: [Beer]?, DefaultResponseError?) -> Void
     ) {
         guard let url = URL(string: baseURL) else { return }

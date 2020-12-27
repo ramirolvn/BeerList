@@ -15,7 +15,8 @@ class BeerCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        beerName.minimumScaleFactor = 0.5
+        beerName.adjustsFontSizeToFitWidth = true
     }
 
     internal func config(beer: Beer) {
@@ -25,11 +26,7 @@ class BeerCell: UITableViewCell {
         } else {
             beerImg.image = #imageLiteral(resourceName: "beer-mug")
         }
-        if let abv = beer.abv {
-            beerABV.text = "\(abv) %"
-        } else {
-            beerABV.text = "Sem álcool"
-        }
+        beerABV.text = beer.teorAlcoolico
 
     }
 

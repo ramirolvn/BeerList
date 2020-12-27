@@ -19,6 +19,14 @@ struct Beer: Codable {
     let ingredients: Ingredients?
     let foodParing: [String]?
 
+    // Aux
+    var teorAlcoolico: String {
+        guard let abv = self.abv else {
+            return "Sem álcool"
+        }
+        return "\(abv) %"
+    }
+
     enum CodingKeys: String, CodingKey {
         case id, name, tagline, description, abv, ibu, ebc, srm, ph, volume, method, ingredients
         case firstBrewed = "first_brewed"

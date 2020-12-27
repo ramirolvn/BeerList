@@ -22,8 +22,6 @@ target 'BeerListPDP' do
 
   target 'BeerListPDPTests' do
     # Pods for testing
-    beers_libs
-    third_party
   end
 
   target 'BeerListPDPUITests' do

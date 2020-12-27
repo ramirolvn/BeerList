@@ -25,6 +25,7 @@ class BeerListController: UIViewController {
 
     private func configView() {
         beerTable.dataSource = self
+        beerTable.delegate = self
         beerTable.register(nibName: BeerCell.getCellName(), cellType: BeerCell.self, bundle: nil)
         viewModel.getBeerList()
         configObservables()
@@ -43,10 +44,21 @@ class BeerListController: UIViewController {
     }
 
     private func showDefaultErrorAlert() {
-        DefaultAlertController.showAlert(parent: self, title: "Atenção", message: "Algum erro ocorreu, por favor tente novamente mais tarde!", style: .alert, defaultActions: ["Ok"], completion: {
-            (_) in
+        DefaultAlertController.showAlert(parent: self,
+                                         title: "Atenção",
+                                         message: "Algum erro ocorreu, por favor tente novamente mais tarde!",
+                                         style: .alert,
+                                         defaultActions: ["Ok"],
+                                         completion: {_ in
             print("Ok Pressed")
         })
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "beerDetail" {
+            let vc = segue.destination as! BeerDetailController
+            vc.viewModel = BeerDetailViewModel(beer: sender as! Beer)
+        }
     }
 }
 
@@ -57,7 +69,9 @@ extension BeerListController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let beerCell = beerTable.dequeueReusableCell(nibName: BeerCell.getCellName(), with: BeerCell.self, for: indexPath), let beer = viewModel.getBeer(at: indexPath.row) else {
+        guard let beerCell = beerTable.dequeueReusableCell(nibName: BeerCell.getCellName(),
+                                                           with: BeerCell.self, for: indexPath),
+              let beer = viewModel.getBeer(at: indexPath.row) else {
             return UITableViewCell()
         }
         beerCell.config(beer: beer)
@@ -73,5 +87,6 @@ extension BeerListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let beer = viewModel.getBeer(at: indexPath.row) else { return }
         print(beer)
+        self.performSegue(withIdentifier: "beerDetail", sender: beer)
     }
 }

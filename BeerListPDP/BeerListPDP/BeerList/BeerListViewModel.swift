@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RxSwift
 import RxCocoa
 
 protocol BeerListViewModelProtocol {
@@ -20,12 +19,12 @@ protocol BeerListViewModelProtocol {
 
 class BeerListViewModel: BeerListViewModelProtocol {
 
-    private let provider: BeerListPDP_APIProtocol
+    private let provider: BeerListPDPAPIProtocol
     private var currentPage: Int = 1
     var defaultErrorObservable: BehaviorRelay<Bool?> = BehaviorRelay(value: nil)
     var beersObservable: BehaviorRelay<[Beer]?> = BehaviorRelay(value: nil)
 
-    init(provider: BeerListPDP_APIProtocol) {
+    init(provider: BeerListPDPAPIProtocol) {
         self.provider = provider
     }
 
@@ -48,7 +47,7 @@ class BeerListViewModel: BeerListViewModelProtocol {
     }
 
     func getBeerList() {
-        self.provider.getBeers(withPage: currentPage, completion: {[weak self] (beers, defaultError) in
+        self.provider.getBeers(at: currentPage, completion: {[weak self] (beers, defaultError) in
             if defaultError != nil {
                 self?.defaultErrorObservable.accept(true)
                 self?.beersObservable.accept(nil)
