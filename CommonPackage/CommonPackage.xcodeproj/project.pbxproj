@@ -14,6 +14,7 @@
 		4FB4DC812598F32500CFFF8A /* CommonPackageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB4DC802598F32500CFFF8A /* CommonPackageTests.swift */; };
 		4FB4DC832598F32500CFFF8A /* CommonPackage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FB4DC752598F32500CFFF8A /* CommonPackage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FB4DC982598F45300CFFF8A /* UIImageView+LoadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB4DC972598F45300CFFF8A /* UIImageView+LoadFromURL.swift */; };
+		4FDBB4F525995B7F00348E14 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBB4F425995B7F00348E14 /* Storyboarded.swift */; };
 		4FEE5DEC2598FA65009BE1EE /* UITableView+RegisterCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE5DEB2598FA65009BE1EE /* UITableView+RegisterCells.swift */; };
 		7DF45DEB639AF733DCA14CA3 /* Pods_CommonPackage_CommonPackageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A6924B5EC5129DA5FA76B6 /* Pods_CommonPackage_CommonPackageTests.framework */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		4FB4DC802598F32500CFFF8A /* CommonPackageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPackageTests.swift; sourceTree = "<group>"; };
 		4FB4DC822598F32500CFFF8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FB4DC972598F45300CFFF8A /* UIImageView+LoadFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+LoadFromURL.swift"; sourceTree = "<group>"; };
+		4FDBB4F425995B7F00348E14 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		4FEE5DEB2598FA65009BE1EE /* UITableView+RegisterCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterCells.swift"; sourceTree = "<group>"; };
 		680BF79AE23D1AD42CD93DDF /* Pods_CommonPackage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPackage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963EAD9E72D5F7B0FEE75383 /* Pods-CommonPackage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPackage.debug.xcconfig"; path = "Target Support Files/Pods-CommonPackage/Pods-CommonPackage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				4F68CECF259910DF00AAA4F5 /* DefaultAlertController.swift */,
+				4FDBB4F425995B7F00348E14 /* Storyboarded.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				4FEE5DEC2598FA65009BE1EE /* UITableView+RegisterCells.swift in Sources */,
 				4F68CED0259910DF00AAA4F5 /* DefaultAlertController.swift in Sources */,
 				4FB4DC982598F45300CFFF8A /* UIImageView+LoadFromURL.swift in Sources */,
+				4FDBB4F525995B7F00348E14 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

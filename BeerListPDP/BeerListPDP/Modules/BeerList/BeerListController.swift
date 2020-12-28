@@ -9,9 +9,14 @@ import UIKit
 import CommonPackage
 import RxSwift
 
-class BeerListController: UIViewController {
+class BeerListController: UIViewController, Storyboarded {
     @IBOutlet weak var beerTable: UITableView!
-    var viewModel: BeerListViewModelProtocol = BeerListViewModel(provider: BeerListPDPAPI())
+    private var viewModel: BeerListViewModelProtocol? {
+        guard let viewModel = BeerListModule.shared.container.container.resolve(BeerListViewModelProtocol.self) else {
+            return nil
+        }
+        return viewModel
+    }
     var disposeBag: DisposeBag? = DisposeBag()
 
     override func viewDidLoad() {
@@ -24,20 +29,22 @@ class BeerListController: UIViewController {
     }
 
     private func configView() {
+        self.title = "Lista de Cervejas"
         beerTable.dataSource = self
         beerTable.delegate = self
+        beerTable.rowHeight = UITableView.automaticDimension
         beerTable.register(nibName: BeerCell.getCellName(), cellType: BeerCell.self, bundle: nil)
-        viewModel.getBeerList()
+        viewModel?.getBeerList()
         configObservables()
     }
 
     private func configObservables() {
         guard let dispose = self.disposeBag else { return }
-        viewModel.beersObservable.subscribe(onNext: { [unowned self] _ in
+        viewModel?.beersObservable.subscribe(onNext: { [unowned self] _ in
             self.beerTable.reloadData()
         }).disposed(by: dispose)
 
-        viewModel.defaultErrorObservable.subscribe(onNext: { [unowned self] error in
+        viewModel?.defaultErrorObservable.subscribe(onNext: { [unowned self] error in
             guard let error = error, error else { return }
             self.showDefaultErrorAlert()
         }).disposed(by: dispose)
@@ -50,33 +57,26 @@ class BeerListController: UIViewController {
                                          style: .alert,
                                          defaultActions: ["Ok"],
                                          completion: {_ in
-            print("Ok Pressed")
-        })
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "beerDetail" {
-            let vc = segue.destination as! BeerDetailController
-            vc.viewModel = BeerDetailViewModel(beer: sender as! Beer)
-        }
+                                            print("Ok Pressed")
+                                         })
     }
 }
 
 // MARK: - TableView DataSource
 extension BeerListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.getRowsCount()
+        viewModel?.getRowsCount() ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let beerCell = beerTable.dequeueReusableCell(nibName: BeerCell.getCellName(),
                                                            with: BeerCell.self, for: indexPath),
-              let beer = viewModel.getBeer(at: indexPath.row) else {
+              let beer = viewModel?.getBeer(at: indexPath.row) else {
             return UITableViewCell()
         }
         beerCell.config(beer: beer)
-        if viewModel.testIfNeedDoAnotherRequest(at: indexPath.row) {
-            viewModel.getBeerList()
+        if viewModel?.testIfNeedDoAnotherRequest(at: indexPath.row) ?? false {
+            viewModel?.getBeerList()
         }
         return beerCell
     }
@@ -85,8 +85,7 @@ extension BeerListController: UITableViewDataSource {
 // MARK: - TableView Delegate
 extension BeerListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let beer = viewModel.getBeer(at: indexPath.row) else { return }
-        print(beer)
-        self.performSegue(withIdentifier: "beerDetail", sender: beer)
+        guard let beer = viewModel?.getBeer(at: indexPath.row) else { return }
+        BeerListModule.shared.goToDetail(beer: beer)
     }
 }

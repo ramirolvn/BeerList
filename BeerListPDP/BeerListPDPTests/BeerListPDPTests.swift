@@ -29,7 +29,7 @@ class BeerListPDPTests: XCTestCase {
             XCTAssert(firstBeer?.id == 321)
         }).disposed(by: disposeBag)
     }
-    
+
     func testSuccessThirdBeerTeorAlcoolico() throws {
         viewModel.getBeerList()
         viewModel.beersObservable.subscribe(onNext: { [unowned self] beers in

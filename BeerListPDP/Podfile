@@ -10,6 +10,7 @@ def third_party
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'SwiftLint'
+  pod 'Swinject'
 end
 
 target 'BeerListPDP' do

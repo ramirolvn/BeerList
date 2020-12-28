@@ -12,9 +12,9 @@ class BeerCell: UITableViewCell {
     @IBOutlet weak var beerImg: UIImageView!
     @IBOutlet weak var beerName: UILabel!
     @IBOutlet weak var beerABV: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         beerName.minimumScaleFactor = 0.5
         beerName.adjustsFontSizeToFitWidth = true
     }
