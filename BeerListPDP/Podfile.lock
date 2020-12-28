@@ -2,6 +2,11 @@ PODS:
   - Alamofire (4.9.1)
   - CommonPackage (0.0.1):
     - Kingfisher
+  - iOSSnapshotTestCase (5.0.2):
+    - iOSSnapshotTestCase/SwiftSupport (= 5.0.2)
+  - iOSSnapshotTestCase/Core (5.0.2)
+  - iOSSnapshotTestCase/SwiftSupport (5.0.2):
+    - iOSSnapshotTestCase/Core
   - Kingfisher (4.10.1)
   - NetworkPackage (0.0.1):
     - Alamofire (= 4.9.1)
@@ -16,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - CommonPackage (from `../CommonPackage`)
+  - iOSSnapshotTestCase
   - NetworkPackage (from `../NetworkPackage`)
   - RxCocoa
   - RxSwift
@@ -25,6 +31,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - iOSSnapshotTestCase
     - Kingfisher
     - RxCocoa
     - RxRelay
@@ -41,6 +48,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   CommonPackage: 703dd7f7ff7051594384c47d0b25b0c33a986a7b
+  iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   NetworkPackage: 29a664219d087f8a8717600d7a0051513c82facf
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
@@ -49,6 +57,6 @@ SPEC CHECKSUMS:
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 1dceb17b469cbbd96f086e07b9ff0e9fc54addb2
+PODFILE CHECKSUM: 471f90ee9a55718742ce54848423df87b6fcf9bb
 
 COCOAPODS: 1.10.0

@@ -13,7 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let navigationController = self.window!.rootViewController as! UINavigationController
+        guard let navigationController = self.window?.rootViewController as? UINavigationController else {
+            print("Failed load Module")
+            return false
+        }
 
         BeerListModule.shared.assembleModule(in: navigationController)
         return true

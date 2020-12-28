@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 // MARK: - BeerListModule module
 
 public class BeerListModule {
