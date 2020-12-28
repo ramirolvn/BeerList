@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Failed load Module")
             return false
         }
-
         BeerListModule.shared.assembleModule(in: navigationController)
         return true
     }
