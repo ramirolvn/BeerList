@@ -50,33 +50,6 @@ public class APIManager {
         }
     }
     
-    public class func baseRequest(request: Requestable, completion: @escaping (DataResponse<Any>?, DefaultResponseError?) -> Void) {
-        guard let requestUrl = request.url else { return }
-        guard var urlComponents = URLComponents(url: requestUrl, resolvingAgainstBaseURL: true) else { return }
-        if urlComponents.queryItems == nil { urlComponents.queryItems = [] }
-        urlComponents.addQueryParameters(request.queryParameters)
-        guard let url = urlComponents.url else { return }
-        
-        var headers: HTTPHeaders?
-        if let requestHeaders = request.hearders {
-            headers = requestHeaders as HTTPHeaders
-        }
-        
-        Alamofire.request(url, method: request.method, parameters: request.bodyParameters, encoding: request.enconding, headers: headers).responseJSON { response in
-            switch response.result {
-            case .success:
-                if response.response?.statusCode != 200 && response.response?.statusCode != 201 && response.response?.statusCode != 204 {
-                    let defaultResponseError = try? JSONDecoder().decode(DefaultResponseError.self, from: response.data!)
-                    completion(nil, defaultResponseError)
-                    return
-                }
-                completion(response, nil)
-            case .failure(let error):
-                setupErrorResponse(response, error: error, completion: completion)
-            }
-        }
-    }
-    
     public class func baseRequestWithExpectedErrorModel<T, G>(returnSucessModel: T.Type, returnErrorModel: G.Type, request: Requestable, completion: @escaping (T?, G?, DefaultResponseError?) -> Void ) where T: Codable, G: Codable {
         guard let requestUrl = request.url else { return }
         guard var urlComponents = URLComponents(url: requestUrl, resolvingAgainstBaseURL: true) else { return }
@@ -112,6 +85,23 @@ public class APIManager {
                 setupErrorWithExpectedErrorModelResponse(response, error: error, completion: completion)
             }
         }
+    }
+    
+    public class func loadLocalJson<T>(returnModel: T.Type, with fileName: String, at bundle: Bundle, completion: @escaping (T?, DefaultResponseError?) -> Void ) where T: Codable {
+        if let url = bundle.url(forResource: fileName, withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(returnModel, from: data)
+                completion (jsonData, nil)
+                return
+            } catch {
+                let defaultResponseError = DefaultResponseError(httpStatusCode: 400, errorCode: String(error._code), message: error.localizedDescription, additionalInfo: nil)
+                completion(nil, defaultResponseError)
+                return
+            }
+        }
+        completion(nil, nil)
     }
     
     // MARK: - Aux Functions

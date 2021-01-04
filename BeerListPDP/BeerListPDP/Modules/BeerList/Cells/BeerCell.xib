@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BeerCell" rowHeight="100" id="j91-0w-aMp" customClass="BeerCell" customModule="BeerListPDP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j91-0w-aMp" id="tbi-qg-r6I">
+                <rect key="frame" x="0.0" y="0.0" width="383" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beer-mug" translatesAutoresizingMaskIntoConstraints="NO" id="Uu9-Rn-x9k">
+                        <rect key="frame" x="20" y="12.5" width="75" height="75"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="75" id="H7z-DH-CiT"/>
+                            <constraint firstAttribute="width" constant="75" id="jgZ-mo-0r8"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beer name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="sEV-Su-eOw">
+                        <rect key="frame" x="116" y="11" width="259" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="ORp-Xy-ESG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8us-2p-Tsp">
+                        <rect key="frame" x="116" y="64" width="259" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="7zt-BL-x33"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sEV-Su-eOw" firstAttribute="top" secondItem="tbi-qg-r6I" secondAttribute="topMargin" id="3YV-ke-lTh"/>
+                    <constraint firstItem="Uu9-Rn-x9k" firstAttribute="leading" secondItem="tbi-qg-r6I" secondAttribute="leadingMargin" id="7gZ-zf-Myn"/>
+                    <constraint firstItem="8us-2p-Tsp" firstAttribute="leading" secondItem="Uu9-Rn-x9k" secondAttribute="trailing" constant="21" id="8ga-uW-WWN"/>
+                    <constraint firstItem="Uu9-Rn-x9k" firstAttribute="top" secondItem="tbi-qg-r6I" secondAttribute="top" constant="12.5" id="KIU-BJ-xLN"/>
+                    <constraint firstAttribute="bottom" secondItem="Uu9-Rn-x9k" secondAttribute="bottom" constant="12.5" id="V3P-g8-UJ6"/>
+                    <constraint firstItem="8us-2p-Tsp" firstAttribute="bottom" secondItem="tbi-qg-r6I" secondAttribute="bottomMargin" id="X1e-N4-dfp"/>
+                    <constraint firstItem="sEV-Su-eOw" firstAttribute="trailing" secondItem="tbi-qg-r6I" secondAttribute="trailingMargin" id="mRt-NK-N4P"/>
+                    <constraint firstItem="8us-2p-Tsp" firstAttribute="trailing" secondItem="tbi-qg-r6I" secondAttribute="trailingMargin" id="rT5-kM-vMs"/>
+                    <constraint firstItem="sEV-Su-eOw" firstAttribute="top" secondItem="tbi-qg-r6I" secondAttribute="top" constant="11" id="rbG-Gk-lhV"/>
+                    <constraint firstItem="sEV-Su-eOw" firstAttribute="leading" secondItem="Uu9-Rn-x9k" secondAttribute="trailing" constant="21" id="sbi-4m-HH5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="beerABV" destination="8us-2p-Tsp" id="g6N-mK-UkW"/>
+                <outlet property="beerImg" destination="Uu9-Rn-x9k" id="eqH-hh-G5f"/>
+                <outlet property="beerName" destination="sEV-Su-eOw" id="zdM-eQ-Ham"/>
+            </connections>
+            <point key="canvasLocation" x="-86" y="42"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="beer-mug" width="42" height="42"/>
+    </resources>
+</document>

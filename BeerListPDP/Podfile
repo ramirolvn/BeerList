@@ -1,11 +1,17 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '9.0'
 
 def beers_libs
   pod 'NetworkPackage', :path => '../NetworkPackage'
+  pod 'CommonPackage', :path => '../CommonPackage'
 end
 
-
+def third_party
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'SwiftLint'
+  pod 'Swinject'
+end
 
 target 'BeerListPDP' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -13,10 +19,11 @@ target 'BeerListPDP' do
 
   # Pods for BeerListPDP
   beers_libs
+  third_party
 
   target 'BeerListPDPTests' do
     # Pods for testing
-    beers_libs
+    pod 'iOSSnapshotTestCase'
   end
 
   target 'BeerListPDPUITests' do
